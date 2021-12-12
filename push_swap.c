@@ -1,5 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/12 15:00:58 by adouib            #+#    #+#             */
+/*   Updated: 2021/12/12 18:23:57 by adouib           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "push_swap.h"
 
 int main(int ac, char const *av[])
 {
@@ -11,33 +22,31 @@ int main(int ac, char const *av[])
 	b = NULL;
 
 	// error management : args are not integers, inter args > MAX_INT, or duplicated numbers
-	char const *s_av[] = {"6", "9", "4"};
-	av = s_av;
-	ac = 3;
+	// char const *s_av[] = {"2", "1", "3"};
+	// av = s_av;
+	// ac = 3;
 
 	if (ac == 1)
-		exit(1);
+		ft_error("You should enter more than one argument!");
 
 	a = stack_init(ac, av);
 	if (stack_is_sorted(a))
 		printf("stack is sorted\n");
 	else
 		printf("stack is NOT sorted\n");
-	if (ac < 4)
+	stack_print(a);
+	if (ac <= 4)
 		sort_three_numbers(a);
 
 	// if (ac < 6)
 	// 	sort_five_numbers(a);
 
 
-
-
-
 	stack_print(a);
 
 	return 0;
 }
-
+/*
 // 1 2 3 4 5 6
 
 // convert n = atoi(av[i])
@@ -73,4 +82,5 @@ sort 5 nums
 	// ra stack A
 
 	// et voila stack A is sorted
+*/
 */

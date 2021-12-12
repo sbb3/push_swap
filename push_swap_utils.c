@@ -1,4 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/12 15:01:06 by adouib            #+#    #+#             */
+/*   Updated: 2021/12/12 18:14:22 by adouib           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
+void	ft_error(char *s)
+{
+	while (*s)
+		write(1, s++, 1);
+	exit(1);
+}
 
 void stack_print(t_stack *list)
 {
@@ -6,13 +25,17 @@ void stack_print(t_stack *list)
 		printf("list == NULL\n");
 	while (list)
 	{
-		printf("%d\n", list->data);
+		printf("%d\n", list->number);
 		list = list->next;
 	}
 	printf("list empty\n");
 }
 
-// node1 node2 node3 1 2 3
+// t_stack *getmax(t_stack *list)
+// {
+	
+// }
+
 int stack_is_sorted(t_stack *list)
 {
 	t_stack	*next_node;
@@ -20,12 +43,17 @@ int stack_is_sorted(t_stack *list)
 	while (list->next != NULL)
 	{
 		next_node = list->next;
-		if (list->data > next_node->data)
+		if (list->number > next_node->number)
 			return (0);
 		list = list->next;
 	}
 	return 1;
 }
+
+// t_stack *delete_top(t_stack *list)
+// {
+	
+// }
 
 t_stack *push_top(t_stack *list, int num)
 {
@@ -35,13 +63,13 @@ t_stack *push_top(t_stack *list, int num)
 	if (list == NULL)
 	{
 		new_node->prev = NULL;
-		new_node->data = num;
+		new_node->number = num;
 		new_node->next = NULL;
 	}
 	else
 	{
 		new_node->prev = NULL;
-		new_node->data = num;
+		new_node->number = num;
 		new_node->next = list;
 		list->prev = new_node;
 		list = new_node;
@@ -66,8 +94,13 @@ t_stack *stack_init(int ac, char const *av[])
 	return (list);
 }
 /*
-132
+132 -> sa 312 -> ra 123
 
+213 sa 123
+231 rra 123
+
+312 ra 123
+321 sa 231 rra 123
 
 */
 void sort_three_numbers(t_stack *list)
@@ -76,13 +109,24 @@ void sort_three_numbers(t_stack *list)
 	int num2;
 	int num3;
 
-	num1 = list->data;
-	num2 = list->next->data;
-	num3 = list->next->next->data;
+	num1 = list->number;
+	num2 = list->next->number;
+	num3 = list->next->next->number;
 
-	if (num1 < num2 && num2)
-		
-	else if (num1 )
+	// if (num1 < num2 && num2 > num3 && num3 > num1)
+	// 	sa_ra(list);
+	if (num1 > num2 && num2 < num3 && num3 > num1)
+	{
+		fprintf(stderr, "im in if function\n");
+		sa(list);
+	
+	}
+	// else if (num1 < num2 && num2 > num3 && num3 < num1)
+	// 	rra(list);
+	// else if (num1 > num2 && num2 < num3 && num3 < num1)
+	// 	ra(list);
+	// else if (num1 > num2 && num2 > num3 && num3 < num1)
+	// 	sa_rra(list);
 }
 
 // void sort_five_numbers(t_stack *list)
