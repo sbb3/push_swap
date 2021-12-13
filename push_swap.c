@@ -22,12 +22,12 @@ int main(int ac, char const *av[])
 	b = NULL;
 
 	// error management : args are not integers, inter args > MAX_INT, or duplicated numbers
-	// char const *s_av[] = {"2", "1", "3"};
+	// char const *s_av[] = {"0", "2", "1", "3"};
 	// av = s_av;
-	// ac = 3;
+	// ac = 4;
 
 	if (ac == 1)
-		ft_error("You should enter more than one argument!");
+		ft_error("You should input more than one argument!");
 
 	a = stack_init(ac, av);
 	if (stack_is_sorted(a))
@@ -35,15 +35,17 @@ int main(int ac, char const *av[])
 	else
 		printf("stack is NOT sorted\n");
 	stack_print(a);
-	if (ac <= 4)
-		sort_three_numbers(a);
 
-	// if (ac < 6)
-	// 	sort_five_numbers(a);
+	a = delete_top(&a);
+	// if (ac <= 4)
+	// 	sort_three_numbers(&a);
+
+	// if (ac <= 6)
+	// 	sort_five_numbers(&a);
 
 
 	stack_print(a);
-
+	printf("lst len : %d\n", ft_lstlen(a));
 	return 0;
 }
 /*
@@ -53,8 +55,6 @@ int main(int ac, char const *av[])
 
 // ft_lstlen
 // delete_top
-// sa sb
-// ra rb
 // getmax
 
 /*
@@ -82,5 +82,4 @@ sort 5 nums
 	// ra stack A
 
 	// et voila stack A is sorted
-*/
 */

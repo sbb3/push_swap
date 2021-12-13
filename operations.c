@@ -20,57 +20,73 @@ node1->prev = node2;
 node1->next = node3;
 
 */
-void	sa(t_stack *list)
+// 3 2 1
+// 2 3 1
+void	sab(t_stack **list, char *s)
 {
-	t_stack *current_node;
 	t_stack *next_node;
 
-	current_node = list;
-	next_node = list->next;
+	next_node = (*list)->next;
 
-	current_node->prev = next_node;
-	current_node->next = next_node->next;
-	
+	(*list)->prev = next_node;
+	(*list)->next = next_node->next;
+	next_node->next->prev = (*list);
+
 	next_node->prev = NULL;
-	next_node->next = current_node;
-	list = next_node;
-	fprintf(stderr, "im in sa function\n");
-
+	next_node->next = (*list);
+	(*list) = next_node;
+	ft_putstr(s);
 }
 
-// void	sb(t_stack *list)
-// {
+// 312 ra 123
+void	rab(t_stack **list, char *s)
+{
+	t_stack *tmp;
+	t_stack *node2;
 
-// }
+	tmp = (*list);
+	node2 = (*list)->next;
 
-// void	ra(t_stack *list)
-// {
+	while ((*list)->next)
+		(*list) = (*list)->next;
 
-// }
+	tmp->prev = (*list);
+	tmp->next = NULL;
 
-// void	rb(t_stack *list)
-// {
-	
-// }
+	(*list)->next = tmp;
 
-// void	rra(t_stack *list)
-// {
-	
-// }
+	node2->prev = NULL;
+	(*list) = node2;
 
-// void	rrb(t_stack *list)
-// {
-	
-// }
+	ft_putstr(s);
+}
+// 231 123
+void	rrab(t_stack **list, char *s)
+{
+	t_stack *tmp;
 
-// void	sa_ra(t_stack *list)
-// {
-// 	sa(list);
-// 	ra(list);
-// }
+	tmp = (*list);
 
-// void	sa_rra(t_stack *list)
-// {
-// 	sa(list);
-// 	rra(list);
-// }
+	while ((*list)->next)
+		(*list) = (*list)->next;
+
+	(*list)->next = tmp;
+	(*list)->prev = NULL;
+	tmp->prev = (*list);
+
+	(tmp)->next->next = NULL;
+
+	ft_putstr(s);
+}
+
+void	sa_ra(t_stack **list)
+{
+	sab(list, "sa");
+	rab(list, "ra");
+}
+
+void	sa_rra(t_stack **list)
+{
+	sab(list, "sa");
+	rrab(list, "rra");
+}

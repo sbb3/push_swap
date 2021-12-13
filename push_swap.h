@@ -25,29 +25,28 @@ typedef struct s_stack
 	struct s_stack *next;
 } t_stack;
 
+void	ft_putstr(char *s);
 int	ft_atoi(const char *s);
 
 // Operations or Actions
-void	sa(t_stack *list);
-void	sb(t_stack *list);
-void	ra(t_stack *list);
-void	rb(t_stack *list);
-void	rra(t_stack *list);
-void	rrb(t_stack *list);
-void	sa_ra(t_stack *list);
+void	sab(t_stack **list, char *s);
+void	rab(t_stack **list, char *s);
+void	rrab(t_stack **list, char *s);
+void	sa_ra(t_stack **list);
+void	sa_rra(t_stack **list);
 
 // Linked list functions
-
+int	ft_lstlen(t_stack *list);
 t_stack *stack_init(int ac, char const *av[]);
 t_stack *push_top(t_stack *list, int num);
-t_stack *delete_top(t_stack *list);
+t_stack *delete_top(t_stack **list);
 int stack_is_sorted(t_stack *list);
 t_stack *getmax(t_stack *list);
 void stack_print(t_stack *list);
 void	ft_error(char *s);
 
 // Sorting algo
-void sort_three_numbers(t_stack *list);
-void sort_five_numbers(t_stack *list);
+void sort_three_numbers(t_stack **list);
+void sort_five_numbers(t_stack **list);
 
 #endif
