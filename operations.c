@@ -20,8 +20,8 @@ node1->prev = node2;
 node1->next = node3;
 
 */
-// 3 2 1
-// 2 3 1
+// 3 2
+// 2 3
 void	sab(t_stack **list, char *s)
 {
 	t_stack *next_node;
@@ -29,8 +29,13 @@ void	sab(t_stack **list, char *s)
 	next_node = (*list)->next;
 
 	(*list)->prev = next_node;
-	(*list)->next = next_node->next;
-	next_node->next->prev = (*list);
+	if (stack_length(*list) == 2)
+		(*list)->next = NULL;
+	else
+	{
+		(*list)->next = next_node->next;
+		next_node->next->prev = (*list);
+	}
 
 	next_node->prev = NULL;
 	next_node->next = (*list);
@@ -90,3 +95,18 @@ void	sa_rra(t_stack **list)
 	sab(list, "sa");
 	rrab(list, "rra");
 }
+
+void	pa(t_stack **a, t_stack **b)
+{
+	*a = push_top((*a), (*b)->number);
+	*b = delete_top((*b));
+	ft_putstr("pa");
+}
+
+void	pb(t_stack **a, t_stack **b)
+{
+	*b = push_top((*b), (*a)->number);
+	*a = delete_top(*a);
+	ft_putstr("pb");
+}
+

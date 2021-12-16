@@ -38,7 +38,7 @@ void stack_print(t_stack *list)
 	printf("\nlist empty\n");
 }
 
-int	ft_lstlen(t_stack *list)
+int	stack_length(t_stack *list)
 {
 	int	count;
 
@@ -51,12 +51,26 @@ int	ft_lstlen(t_stack *list)
 	return count;
 }
 
-// t_stack *getmax(t_stack *list)
+// void	checking(char **av, int ac)
 // {
 
 // }
 
-int stack_is_sorted(t_stack *list)
+int get_max(t_stack *list)
+{
+	int max;
+	int size = stack_length(list);
+	max = list->number;
+	while (list)
+	{
+		if (max < list->number)
+			max = list->number;
+		list = list->next;
+	}
+	return max;
+}
+
+int is_sorted(t_stack *list)
 {
 	t_stack	*next_node;
 
@@ -70,18 +84,23 @@ int stack_is_sorted(t_stack *list)
 	return 1;
 }
 
-t_stack *delete_top(t_stack **list)
+t_stack *delete_top(t_stack *list)
 {
 	t_stack *tmp;
 
-	tmp = (*list);
+	if (list->next == NULL)
+	{
+		free(list);
+		return NULL;
+	}
+	tmp = list;
 
-	(*list) = (*list)->next;
-	(*list)->prev = NULL;
+	list = list->next;
+	list->prev = NULL;
 
 	free(tmp);
 
-	return (*list);
+	return (list);
 }
 
 
@@ -107,7 +126,7 @@ t_stack *push_top(t_stack *list, int num)
 	return (new_node);
 }
 
-t_stack *stack_init(int ac, char const *av[])
+t_stack *stack_init(int ac, int arr[])
 {
 	int num;
 	int i;
@@ -117,12 +136,104 @@ t_stack *stack_init(int ac, char const *av[])
 	list = NULL;
 	while (ac)
 	{
-		num = ft_atoi(av[ac]);
-		list = push_top(list, num);
+		list = push_top(list, arr[ac]);
+		// fprintf(stderr, "list num : %d\n", list->number);
+		// fprintf(stderr, "arr num : %d\n", arr[ac]);
 		ac--;
 	}
 	return (list);
 }
+
+int	*ft_intdup(int *arr, int len)
+{
+	int	*buf;
+	int	i;
+
+	buf = (int *) malloc(sizeof(int) * len);
+	if (!buf)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		buf[i] = arr[i];
+		i++;
+	}
+	return (buf);
+}
+
+void ft_swap(int *xp, int *yp)
+{
+    int temp = *xp;
+    *xp = *yp;
+    *yp = temp;
+}
+
+void ft_sort(int arr[], int n)
+{
+   int i;
+   int j;
+
+   i = 0;
+   j = 0;
+		// fprintf(stderr, "n : %d\n", n);
+
+   while (i < n - 1)
+   {
+	   j = 0;
+	   while (j < n - i - 1)
+	   {
+			if (arr[j] > arr[j + 1])
+				// ft_swap(arr + j, arr + j + 1);
+			j++;
+	   }
+		// fprintf(stderr, "i : %d\n", i);
+	   i++;
+   }
+}
+
+int	*stack_indexed(int ac, char const *av[])
+{
+	// static int *ak47;
+	int *ak47;
+	int *SOS_dup;
+	int i;
+	int j;
+	int ac_backup = ac;
+
+	ak47 = malloc(sizeof(int) * ac);
+	i = 0;
+	j = 1;
+	// ac = ac -1;
+	while (--ac_backup)
+	{
+		ak47[i] = ft_atoi(av[j]);
+		i++;
+		j++;
+	}
+
+	ac = ac - 1;
+
+	SOS_dup = ft_intdup(ak47, ac);
+	ft_sort(SOS_dup, ac);
+	i = 0;
+	j = 0;
+	// ac = ac -1;
+
+	while (i < ac)
+	{
+		j = 0;
+		while (j < ac)
+		{
+			if (ak47[i] == SOS_dup[j])
+				ak47[i] = j;
+			j++;
+		}
+		i++;
+	}
+	// free(SOS_dup);
+	return ak47;
+}
+
 /*
 132 -> sa 312 -> ra 123
 
@@ -155,7 +266,18 @@ void sort_three_numbers(t_stack **list)
 		sa_rra(list);
 }
 
-void sort_five_numbers(t_stack **list)
+void sort_five_numbers(t_stack **a, t_stack **b)
 {
-
+	pb(a, b);
+	pb(a, b);
+	sort_three_numbers(a);
+	if (!is_sorted(*b))
+		sab(b, "sb");
+	pa(a, b);
+	rab(a, "ra");
+	pa(a, b);
+	rab(a, "ra");
 }
+
+
+

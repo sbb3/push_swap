@@ -14,13 +14,14 @@
 
 int main(int ac, char const *av[])
 {
-
+	int *arr = malloc(sizeof(int) * ac - 1);
 	t_stack *a;
 	t_stack *b;
 
 	a = NULL;
 	b = NULL;
 
+	// checking(av, ac);
 	// error management : args are not integers, inter args > MAX_INT, or duplicated numbers
 	// char const *s_av[] = {"0", "2", "1", "3"};
 	// av = s_av;
@@ -29,23 +30,30 @@ int main(int ac, char const *av[])
 	if (ac == 1)
 		ft_error("You should input more than one argument!");
 
-	a = stack_init(ac, av);
-	if (stack_is_sorted(a))
+	arr = stack_indexed(ac, av);
+	int i = -1;
+	while (++i < 3)
+		printf("arr main : %d ", arr[i]);
+	a = stack_init(ac, arr);
+	if (is_sorted(a))
 		printf("stack is sorted\n");
 	else
 		printf("stack is NOT sorted\n");
 	stack_print(a);
 
-	a = delete_top(&a);
-	// if (ac <= 4)
-	// 	sort_three_numbers(&a);
+	// a = delete_top(&a);
 
-	// if (ac <= 6)
-	// 	sort_five_numbers(&a);
+	if (ac <= 4)
+		sort_three_numbers(&a);
 
+	if (ac <= 6)
+		sort_five_numbers(&a, &b);
 
+	// if (ac > 6)
+	// 	sort_big_numbers(&a, &b);
+	// printf("max : %d\n", get_max(a));
 	stack_print(a);
-	printf("lst len : %d\n", ft_lstlen(a));
+	// printf("lst len : %d\n", stack_length(a));
 	return 0;
 }
 /*
@@ -53,7 +61,7 @@ int main(int ac, char const *av[])
 
 // convert n = atoi(av[i])
 
-// ft_lstlen
+// stack_length
 // delete_top
 // getmax
 
