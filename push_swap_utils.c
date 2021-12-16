@@ -6,7 +6,7 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:01:06 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/12 18:14:22 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/16 21:03:08 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,17 +129,17 @@ t_stack *push_top(t_stack *list, int num)
 t_stack *stack_init(int ac, int arr[])
 {
 	int num;
-	int i;
+	int size;
 	t_stack *list;
 
-	ac = ac - 1;
 	list = NULL;
-	while (ac)
+	size = ac - 1;
+	while (size != -1)
 	{
-		list = push_top(list, arr[ac]);
+		list = push_top(list, arr[size]);
 		// fprintf(stderr, "list num : %d\n", list->number);
-		// fprintf(stderr, "arr num : %d\n", arr[ac]);
-		ac--;
+		// fprintf(stderr, "ac: %d\n", size);
+		size--;
 	}
 	return (list);
 }
@@ -174,7 +174,6 @@ void ft_sort(int arr[], int n)
    int j;
 
    i = 0;
-   j = 0;
 		// fprintf(stderr, "n : %d\n", n);
 
    while (i < n - 1)
@@ -183,7 +182,7 @@ void ft_sort(int arr[], int n)
 	   while (j < n - i - 1)
 	   {
 			if (arr[j] > arr[j + 1])
-				// ft_swap(arr + j, arr + j + 1);
+				ft_swap(arr + j, arr + j + 1);
 			j++;
 	   }
 		// fprintf(stderr, "i : %d\n", i);
@@ -202,36 +201,46 @@ int	*stack_indexed(int ac, char const *av[])
 
 	ak47 = malloc(sizeof(int) * ac);
 	i = 0;
-	j = 1;
 	// ac = ac -1;
-	while (--ac_backup)
+	while (ac_backup)
 	{
-		ak47[i] = ft_atoi(av[j]);
+		ak47[i] = ft_atoi(av[i + 1]);
 		i++;
-		j++;
+		ac_backup--;
 	}
-
-	ac = ac - 1;
+	// i = -1;
+	// while (++i < 3)
+	// 	printf("ak47 : %d ", ak47[i]);
 
 	SOS_dup = ft_intdup(ak47, ac);
 	ft_sort(SOS_dup, ac);
+	// i = -1;
+	// while (++i < 3)
+	// 	printf("sos dup: %d ", SOS_dup[i]);
 	i = 0;
 	j = 0;
 	// ac = ac -1;
-
+	int *p = malloc(sizeof(int) * ac);
 	while (i < ac)
 	{
 		j = 0;
 		while (j < ac)
 		{
 			if (ak47[i] == SOS_dup[j])
-				ak47[i] = j;
+				p[i] = j;
 			j++;
 		}
 		i++;
 	}
+	// i = -1;
+	// while (++i < 3)
+	// 	printf("ppppppp [%d]: %d ",i , p[i]);
 	// free(SOS_dup);
-	return ak47;
+	// i = -1;
+	// while (++i < 3)
+	// 	printf("arr main : %d ", ak47[i]);
+	// fprintf(stderr, "pppp size : %lu\n", sizeof(p) / sizeof(int));
+	return p;
 }
 
 /*
@@ -278,6 +287,3 @@ void sort_five_numbers(t_stack **a, t_stack **b)
 	pa(a, b);
 	rab(a, "ra");
 }
-
-
-

@@ -2,7 +2,7 @@
 
 
 
-void	sort_big_numbers(t_stack **a, t_stack **b)
+void	radix_sort(t_stack **a, t_stack **b)
 {
 
 }
@@ -28,4 +28,4 @@ while (i < max_bits)
 }
 
 
-
+*/

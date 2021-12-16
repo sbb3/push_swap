@@ -6,7 +6,7 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:00:58 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/12 18:23:57 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/16 21:22:00 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(int ac, char const *av[])
 {
-	int *arr = malloc(sizeof(int) * ac - 1);
+	int *arr = malloc(sizeof(int) * ac);
 	t_stack *a;
 	t_stack *b;
 
@@ -30,10 +30,12 @@ int main(int ac, char const *av[])
 	if (ac == 1)
 		ft_error("You should input more than one argument!");
 
+	ac = ac - 1;
 	arr = stack_indexed(ac, av);
-	int i = -1;
-	while (++i < 3)
-		printf("arr main : %d ", arr[i]);
+	// int i = -1;
+	// while (++i < 3)
+	// 	printf("arr [%d] : %d ", i, arr[i]);
+
 	a = stack_init(ac, arr);
 	if (is_sorted(a))
 		printf("stack is sorted\n");
@@ -42,15 +44,16 @@ int main(int ac, char const *av[])
 	stack_print(a);
 
 	// a = delete_top(&a);
+	// fprintf(stderr, "ac : %d\n", ac);
 
-	if (ac <= 4)
+	if (ac < 4)
 		sort_three_numbers(&a);
 
-	if (ac <= 6)
+	else if (ac < 6)
 		sort_five_numbers(&a, &b);
 
-	// if (ac > 6)
-	// 	sort_big_numbers(&a, &b);
+	else
+		radix_sort(&a, &b);
 	// printf("max : %d\n", get_max(a));
 	stack_print(a);
 	// printf("lst len : %d\n", stack_length(a));
@@ -65,7 +68,7 @@ int main(int ac, char const *av[])
 // delete_top
 // getmax
 
-/*
+
 sort 5 nums
 	// 1. search for max number
 	// 2. push to B
@@ -90,4 +93,7 @@ sort 5 nums
 	// ra stack A
 
 	// et voila stack A is sorted
+*/
+/*
+gcc push_swap.c push_swap_utils.c operations.c utils2.c libftmac.a
 */

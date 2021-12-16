@@ -6,7 +6,7 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:01:10 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/12 17:11:47 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/16 21:17:15 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,5 @@ void	ft_error(char *s);
 // Sorting algo
 void sort_three_numbers(t_stack **list);
 void sort_five_numbers(t_stack **a, t_stack **b);
-void	sort_big_numbers(t_stack **a, t_stack **b);
+void	radix_sort(t_stack **a, t_stack **b);
 #endif
