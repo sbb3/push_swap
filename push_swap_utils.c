@@ -6,7 +6,7 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:01:06 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/16 21:03:08 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/17 18:29:51 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,20 +259,33 @@ void sort_three_numbers(t_stack **list)
 	int num2;
 	int num3;
 
-	num1 = (*list)->number;
-	num2 = (*list)->next->number;
-	num3 = (*list)->next->next->number;
+	// num1 = (*list)->number;
+	// num2 = (*list)->next->number;
+	// num3 = (*list)->next->next->number;
 
-	if (num1 < num2 && num2 > num3 && num3 > num1)
-		sa_ra(list);
-	else if (num1 > num2 && num2 < num3 && num3 > num1)
-		sab(list, "sa");
-	else if (num1 < num2 && num2 > num3 && num3 < num1)
-		rrab(list, "rra");
-	else if (num1 > num2 && num2 < num3 && num3 < num1)
-		rab(list, "ra");
-	else if (num1 > num2 && num2 > num3 && num3 < num1)
-		sa_rra(list);
+	// if (num1 < num2 && num2 > num3 && num3 > num1)
+	// 	sa_ra(list);
+	// else if (num1 > num2 && num2 < num3 && num3 > num1)
+	// 	s(list, "sa");
+	// else if (num1 < num2 && num2 > num3 && num3 < num1)
+	// 	rr(list, "rra");
+	// else if (num1 > num2 && num2 < num3 && num3 < num1)
+	// 	r(list, "ra");
+	// else if (num1 > num2 && num2 > num3 && num3 < num1)
+	// 	sa_rra(list);
+
+	t_stack *head;
+	while (!is_sorted((*list)))
+	{
+		head = (*list);
+		
+		if ((head->number >> 0 & 1) == 1)
+			s(list, "sa");
+		if ((head->number >> 1 & 1) == 1)
+			r(list, "ra");
+		// else
+		// 	rr(list, "rra");
+	}
 }
 
 void sort_five_numbers(t_stack **a, t_stack **b)
@@ -281,9 +294,66 @@ void sort_five_numbers(t_stack **a, t_stack **b)
 	pb(a, b);
 	sort_three_numbers(a);
 	if (!is_sorted(*b))
-		sab(b, "sb");
+		s(b, "sb");
 	pa(a, b);
-	rab(a, "ra");
+	r(a, "ra");
 	pa(a, b);
-	rab(a, "ra");
+	r(a, "ra");
 }
+
+/*
+3   1    2
+10  00   01
+
+ra
+2 10
+0 00
+1 01
+
+sa
+1 01
+0 00
+2 10
+
+sa rra or ra sa
+2 10
+1 01
+0 00
+
+sa ra
+2 10
+1 01
+0 00
+
+1 01
+2 10
+0 00
+
+
+
+---
+rra
+1 01
+2 10
+0 00
+
+2
+1
+0
+
+1
+0
+2
+
+if ()
+
+if (num >> 1 & 1 == 1)
+	sa
+	
+if (num >> 2 & 1 == 1)
+	ra
+
+
+
+check if sorted
+*/

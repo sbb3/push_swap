@@ -6,7 +6,7 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:00:58 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/16 21:22:00 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/17 18:22:46 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ int main(int ac, char const *av[])
 	else
 		radix_sort(&a, &b);
 	// printf("max : %d\n", get_max(a));
+	if (is_sorted(a))
+		printf("\nstack is sorted\n");
+	else
+		printf("\nstack is NOT sorted\n");
+		
 	stack_print(a);
 	// printf("lst len : %d\n", stack_length(a));
 	return 0;
@@ -96,4 +101,73 @@ sort 5 nums
 */
 /*
 gcc push_swap.c push_swap_utils.c operations.c utils2.c libftmac.a
+
+static char *backup;
+char *line
+
+backup = readfile(fd, backup)
+if (!backup)
+	return 0;
+line =  getline(backup)
+backup = leftoverlines(backup)
+
+ft_free(s) -> free(s) s = NULL return s
+searchnewline
+strdup
+strcutfromto
+strjoin
+	free backup
+
+readfile
+	filebuffer
+	readbytes
+	filebufer = malloc(BUFFER_SIZE)
+	while loop (!searchnewline(backup, "\n") && readbytes > 1)
+		bytesreturned = read(fd, filebuffer, BUFFER_SIZE)
+		if (bytesread == -1)
+			ft_free(filebuffer)
+		backup = strjoin(backup, filebufer)
+	free(filebufer)
+	if (backup == '\0')
+		ft_free(backup)
+	return backup
+	
+getline
+	linesize
+	while (backup != '\n' && '\0')
+		linesize++;
+	if (backup[linesize] == '\n')
+		linesize++;
+	line = strcutfromto(backup, 0, linesize)
+	return line
+
+leftoverslines
+	start
+	backupsize = ft_strlen(backup)
+	while (backup != '\n' && '\0')
+		start++;
+	if (backup(start) == '\0')
+		ft_free(backup)
+	backup = strcutfromto(backup, start + 1, backupsize);
+	return backup;
+
+
+intlen
+itoabase
+	s = "0123456789abcdef"
+
+
+while n != 0
+	modulo = n % base
+	buf[--len] = s[mopdulo]
+	n = n / base;
+
+ft_putstr
+putchar
+va_arg
+va_list
+va_end
+i
+
+
 */

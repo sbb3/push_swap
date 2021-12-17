@@ -6,7 +6,7 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:01:10 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/16 21:17:15 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/17 17:49:36 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ int	ft_atoi(const char *s);
 int	*ft_intdup(int *arr, int len);
 void	checking(char **av, int ac);
 // Operations or Actions
-void	sab(t_stack **list, char *s);
+void	s(t_stack **list, char *s);
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **a, t_stack **b);
-void	rab(t_stack **list, char *s);
-void	rrab(t_stack **list, char *s);
+void	r(t_stack **list, char *s);
+void	rr(t_stack **list, char *s);
 void	sa_ra(t_stack **list);
 void	sa_rra(t_stack **list);
 

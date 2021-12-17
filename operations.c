@@ -6,7 +6,7 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:00:53 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/12 18:13:03 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/17 17:49:36 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ node1->next = node3;
 */
 // 3 2
 // 2 3
-void	sab(t_stack **list, char *s)
+void	s(t_stack **list, char *s)
 {
 	t_stack *next_node;
 
@@ -44,7 +44,7 @@ void	sab(t_stack **list, char *s)
 }
 
 // 312 ra 123
-void	rab(t_stack **list, char *s)
+void	r(t_stack **list, char *s)
 {
 	t_stack *tmp;
 	t_stack *node2;
@@ -66,7 +66,7 @@ void	rab(t_stack **list, char *s)
 	ft_putstr(s);
 }
 // 231 123
-void	rrab(t_stack **list, char *s)
+void	rr(t_stack **list, char *s)
 {
 	t_stack *tmp;
 
@@ -86,14 +86,14 @@ void	rrab(t_stack **list, char *s)
 
 void	sa_ra(t_stack **list)
 {
-	sab(list, "sa");
-	rab(list, "ra");
+	s(list, "sa");
+	r(list, "ra");
 }
 
 void	sa_rra(t_stack **list)
 {
-	sab(list, "sa");
-	rrab(list, "rra");
+	s(list, "sa");
+	rr(list, "rra");
 }
 
 void	pa(t_stack **a, t_stack **b)
