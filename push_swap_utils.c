@@ -35,7 +35,7 @@ void stack_print(t_stack *list)
 		printf("%d ", list->number);
 		list = list->next;
 	}
-	printf("\nlist empty\n");
+	printf("\n");
 }
 
 int	stack_length(t_stack *list)
@@ -51,25 +51,6 @@ int	stack_length(t_stack *list)
 	return count;
 }
 
-// void	checking(char **av, int ac)
-// {
-
-// }
-
-int get_max(t_stack *list)
-{
-	int max;
-	int size = stack_length(list);
-	max = list->number;
-	while (list)
-	{
-		if (max < list->number)
-			max = list->number;
-		list = list->next;
-	}
-	return max;
-}
-
 int is_sorted(t_stack *list)
 {
 	t_stack	*next_node;
@@ -83,6 +64,10 @@ int is_sorted(t_stack *list)
 	}
 	return 1;
 }
+// void	checking(char **av, int ac)
+// {
+
+// }
 
 t_stack *delete_top(t_stack *list)
 {
@@ -242,118 +227,3 @@ int	*stack_indexed(int ac, char const *av[])
 	// fprintf(stderr, "pppp size : %lu\n", sizeof(p) / sizeof(int));
 	return p;
 }
-
-/*
-132 -> sa 312 -> ra 123
-
-213 sa 123
-231 rra 123
-
-312 ra 123
-321 sa 231 rra 123
-
-*/
-void sort_three_numbers(t_stack **list)
-{
-	int num1;
-	int num2;
-	int num3;
-
-	// num1 = (*list)->number;
-	// num2 = (*list)->next->number;
-	// num3 = (*list)->next->next->number;
-
-	// if (num1 < num2 && num2 > num3 && num3 > num1)
-	// 	sa_ra(list);
-	// else if (num1 > num2 && num2 < num3 && num3 > num1)
-	// 	s(list, "sa");
-	// else if (num1 < num2 && num2 > num3 && num3 < num1)
-	// 	rr(list, "rra");
-	// else if (num1 > num2 && num2 < num3 && num3 < num1)
-	// 	r(list, "ra");
-	// else if (num1 > num2 && num2 > num3 && num3 < num1)
-	// 	sa_rra(list);
-
-	t_stack *head;
-	while (!is_sorted((*list)))
-	{
-		head = (*list);
-		
-		if ((head->number >> 0 & 1) == 1)
-			s(list, "sa");
-		if ((head->number >> 1 & 1) == 1)
-			r(list, "ra");
-		// else
-		// 	rr(list, "rra");
-	}
-}
-
-void sort_five_numbers(t_stack **a, t_stack **b)
-{
-	pb(a, b);
-	pb(a, b);
-	sort_three_numbers(a);
-	if (!is_sorted(*b))
-		s(b, "sb");
-	pa(a, b);
-	r(a, "ra");
-	pa(a, b);
-	r(a, "ra");
-}
-
-/*
-3   1    2
-10  00   01
-
-ra
-2 10
-0 00
-1 01
-
-sa
-1 01
-0 00
-2 10
-
-sa rra or ra sa
-2 10
-1 01
-0 00
-
-sa ra
-2 10
-1 01
-0 00
-
-1 01
-2 10
-0 00
-
-
-
----
-rra
-1 01
-2 10
-0 00
-
-2
-1
-0
-
-1
-0
-2
-
-if ()
-
-if (num >> 1 & 1 == 1)
-	sa
-	
-if (num >> 2 & 1 == 1)
-	ra
-
-
-
-check if sorted
-*/

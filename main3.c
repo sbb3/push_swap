@@ -34,7 +34,7 @@ void inter(char const *s1, char const *s2)
 			write(1, &s1[i], 1);
 		i++;
 	}
-	
+
 }
 
 int main(int ac, char const *av[])
@@ -44,3 +44,18 @@ int main(int ac, char const *av[])
 	write(1, "\n", 1);
 	return 0;
 }
+
+
+
+/*
+
+021
+
+213
+231
+
+312
+321
+
+
+*/

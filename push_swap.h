@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-
+#include <string.h>
 
 typedef struct s_stack
 {
@@ -29,21 +29,22 @@ typedef struct s_stack
 void	ft_putstr(char *s);
 int	ft_atoi(const char *s);
 int	*ft_intdup(int *arr, int len);
-void	checking(char **av, int ac);
+// void	ft_error(char **av, int ac);
 // Operations or Actions
 void	s(t_stack **list, char *s);
-void	pa(t_stack **a, t_stack **b);
-void	pb(t_stack **a, t_stack **b);
+void	p(t_stack **a, t_stack **b, char *s);
 void	r(t_stack **list, char *s);
 void	rr(t_stack **list, char *s);
-void	sa_ra(t_stack **list);
-void	sa_rra(t_stack **list);
+void	srr(t_stack **stack);
+void	rrs(t_stack **stack);
 
 // Linked list functions
 int	*stack_indexed(int ac, char const *av[]);
 void ft_swap(int *xp, int *yp);
 void ft_sort(int arr[], int n);
 static int	ft_intlen(int n);
+int	get_min(t_stack **a);
+int	get_next_min(t_stack **a, int min);
 
 int	stack_length(t_stack *list);
 
@@ -56,7 +57,9 @@ void stack_print(t_stack *list);
 void	ft_error(char *s);
 
 // Sorting algo
-void sort_three_numbers(t_stack **list);
-void sort_five_numbers(t_stack **a, t_stack **b);
+void 	sort_three_numbers(t_stack **a);
+void 	sort_four_numbers(t_stack **a, t_stack **b);
+void 	sort_five_numbers(t_stack **a, t_stack **b);
+void	simple_sort(t_stack **a, t_stack **b, int ac);
 void	radix_sort(t_stack **a, t_stack **b);
 #endif

@@ -11,6 +11,38 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+int	kolo(int c)
+{
+	fprintf(stderr, "i am here\n");
+
+	if (!(c >= '0' && c <= '9'))
+		return (0);
+	fprintf(stderr, "i am here\n");
+
+	return (1);
+}
+int	ft_isdigit(const char **av, int ac)
+{
+	int i;
+	int j;
+
+	i = 1;
+	j = 0;
+	while (av[ac][j])
+	{
+		j = 0;
+		while (av[ac][j])
+		{
+			if (!kolo(av[ac][j]))
+				return (0);
+			j++;
+		}
+		fprintf(stderr, "ac : %d\n", ac);
+		ac--;
+	}
+	return (1);
+}
+
 
 int main(int ac, char const *av[])
 {
@@ -21,47 +53,52 @@ int main(int ac, char const *av[])
 	a = NULL;
 	b = NULL;
 
-	// checking(av, ac);
 	// error management : args are not integers, inter args > MAX_INT, or duplicated numbers
 	// char const *s_av[] = {"0", "2", "1", "3"};
 	// av = s_av;
 	// ac = 4;
 
-	if (ac == 1)
-		ft_error("You should input more than one argument!");
-
+	// if (ac == 1)
+	// 	ft_error("Error");
 	ac = ac - 1;
+
+	if (!ft_isdigit(av, ac))
+	{
+		printf("NOT DIGIT\n");
+		exit(1);
+	}
+	else
+	{
+		printf("DIGIT\n");
+		exit(1);
+	}
 	arr = stack_indexed(ac, av);
-	// int i = -1;
-	// while (++i < 3)
-	// 	printf("arr [%d] : %d ", i, arr[i]);
+
+	// ft_error(av, ac);
 
 	a = stack_init(ac, arr);
+
 	if (is_sorted(a))
+	{
 		printf("stack is sorted\n");
+		return 0;
+	}
 	else
 		printf("stack is NOT sorted\n");
 	stack_print(a);
 
-	// a = delete_top(&a);
-	// fprintf(stderr, "ac : %d\n", ac);
+	if (ac < 6)
+		simple_sort(&a, &b, ac);
+	// else
+	// 	radix_sort(&a, &b);
 
-	if (ac < 4)
-		sort_three_numbers(&a);
-
-	else if (ac < 6)
-		sort_five_numbers(&a, &b);
-
-	else
-		radix_sort(&a, &b);
-	// printf("max : %d\n", get_max(a));
 	if (is_sorted(a))
 		printf("\nstack is sorted\n");
 	else
 		printf("\nstack is NOT sorted\n");
-		
+
 	stack_print(a);
-	// printf("lst len : %d\n", stack_length(a));
+
 	return 0;
 }
 /*
@@ -131,7 +168,7 @@ readfile
 	if (backup == '\0')
 		ft_free(backup)
 	return backup
-	
+
 getline
 	linesize
 	while (backup != '\n' && '\0')

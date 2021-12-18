@@ -84,29 +84,109 @@ void	rr(t_stack **list, char *s)
 	ft_putstr(s);
 }
 
-void	sa_ra(t_stack **list)
+void	rrs(t_stack **stack)
 {
-	s(list, "sa");
-	r(list, "ra");
+	rr(stack, "rra");
+	s(stack, "sa");
 }
 
-void	sa_rra(t_stack **list)
+void	srr(t_stack **stack)
 {
-	s(list, "sa");
-	rr(list, "rra");
+	s(stack, "sa");
+	rr(stack, "rra");
 }
 
-void	pa(t_stack **a, t_stack **b)
+// remove strcmp from below
+
+void	p(t_stack **a, t_stack **b, char *s)
 {
-	*a = push_top((*a), (*b)->number);
-	*b = delete_top((*b));
-	ft_putstr("pa");
+	if (!strcmp(s, "pa"))
+	{
+		*a = push_top((*a), (*b)->number);
+		*b = delete_top((*b));
+	}
+	else if (!strcmp(s, "pb"))
+	{
+		*b = push_top((*b), (*a)->number);
+		*a = delete_top(*a);
+	}
+	ft_putstr(s);
 }
 
-void	pb(t_stack **a, t_stack **b)
-{
-	*b = push_top((*b), (*a)->number);
-	*a = delete_top(*a);
-	ft_putstr("pb");
-}
+/*
+3 old
+if ((num >> 0 & 1) == 1)
+			s(a, "sa");
+		else if ((num >> 1 & 1) == 1 || (num >> 1 & 1) == 0)
+			r(a, "ra");
 
+*/
+
+/*
+OLD
+
+	while (!is_sorted((*a)) && k != 2)
+	{
+		head = (*a);
+		num = head->number;
+		if (num == min || num == next_min)
+		{
+			p(a, b, "pb");
+
+			k++;
+			if (k == 2)
+				break ;
+		}
+		else
+			r(a, "ra");
+	}
+	if (!is_sorted(*a))
+		sort_three_numbers(a);
+	if (is_sorted(*b))
+		s(b, "sb");
+	while (stack_length(*b))
+		p(a, b, "pa");
+*/
+
+/*
+NEW
+	while (!is_sorted((*a)))
+	{
+		head = (*a);
+		num = head->number;
+		if ((num == min || num == next_min) && (k != 2))
+		{
+			p(a, b, "pb");
+			k++;
+			// if (k == 2)
+			// 	break ;
+		}
+		else if (stack_length(*a) == 3 && !is_sorted(*a))
+			sort_three_numbers(a);
+		else
+			r(a, "ra");
+	}
+
+	if (is_sorted(*b))
+		s(b, "sb");
+	while (stack_length(*b))
+		p(a, b, "pa");
+*/
+
+/*
+
+int num1 = (*a)->number;
+	int num2 = (*a)->next->number;
+	int num3 = (*a)->next->next->number;
+
+	if (num1 < num2 && num2 > num3 && num3 > num1)
+		sa_ra(a);
+	else if (num1 > num2 && num2 < num3 && num3 > num1)
+		s(a, "sa");
+	else if (num1 < num2 && num2 > num3 && num3 < num1)
+		rr(a, "rra");
+	else if (num1 > num2 && num2 < num3 && num3 < num1)
+		r(a, "ra");
+	else if (num1 > num2 && num2 > num3 && num3 < num1)
+		sa_rra(a);
+*/
