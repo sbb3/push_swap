@@ -6,7 +6,7 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:01:10 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/17 17:49:36 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/19 12:00:29 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-
+#include <limits.h>
 typedef struct s_stack
 {
 	struct s_stack *prev;
@@ -29,7 +29,6 @@ typedef struct s_stack
 void	ft_putstr(char *s);
 int	ft_atoi(const char *s);
 int	*ft_intdup(int *arr, int len);
-// void	ft_error(char **av, int ac);
 // Operations or Actions
 void	s(t_stack **list, char *s);
 void	p(t_stack **a, t_stack **b, char *s);
@@ -55,6 +54,7 @@ int is_sorted(t_stack *list);
 int get_max(t_stack *list);
 void stack_print(t_stack *list);
 void	ft_error(char *s);
+int	is_duplicated(int arr[], int ac);
 
 // Sorting algo
 void 	sort_three_numbers(t_stack **a);

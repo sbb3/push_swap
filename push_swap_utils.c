@@ -6,7 +6,7 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:01:06 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/17 18:29:51 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/19 14:25:36 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,35 @@ void	ft_putstr(char *s)
 		write(1, s++, 1);
 	write(1, "\n", 1);
 }
+/*
+4 7 7 6
+4 7 7 6
+*/
+
+int	is_duplicated(int arr[], int ac)
+{
+	int i = 0;
+	int j;
+	j = 0;
+	while (i < ac)
+	{
+		j = i;
+		while (j < ac - 1)
+		{
+			if (arr[i] == arr[j + 1])
+				return 1;
+			j++;
+		}
+		i++;
+	}
+	return 0;
+}
 
 void	ft_error(char *s)
 {
 	while (*s)
 		write(1, s++, 1);
+	write(1, "\n", 1);
 	exit(1);
 }
 
@@ -115,18 +139,20 @@ t_stack *stack_init(int ac, int arr[])
 {
 	int num;
 	int size;
-	t_stack *list;
+	t_stack *a;
 
-	list = NULL;
+	a = NULL;
 	size = ac - 1;
 	while (size != -1)
 	{
-		list = push_top(list, arr[size]);
+		a = push_top(a, arr[size]);
 		// fprintf(stderr, "list num : %d\n", list->number);
 		// fprintf(stderr, "ac: %d\n", size);
 		size--;
 	}
-	return (list);
+	// if (is_sorted(a))
+	// 	ft_error();
+	return (a);
 }
 
 int	*ft_intdup(int *arr, int len)
@@ -193,9 +219,11 @@ int	*stack_indexed(int ac, char const *av[])
 		i++;
 		ac_backup--;
 	}
-	// i = -1;
-	// while (++i < 3)
-	// 	printf("ak47 : %d ", ak47[i]);
+	if (is_duplicated(ak47, ac))
+		ft_error("Error");
+	i = -1;
+	// while (++i < 5)
+	// 	printf("ak47 : %d\n", ak47[i]);
 
 	SOS_dup = ft_intdup(ak47, ac);
 	ft_sort(SOS_dup, ac);

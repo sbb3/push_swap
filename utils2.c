@@ -1,10 +1,47 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/19 10:46:18 by adouib            #+#    #+#             */
+/*   Updated: 2021/12/19 10:54:28 by adouib           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+
+#include "push_swap.h"
 
 
 void	radix_sort(t_stack **a, t_stack **b)
 {
-
+	t_stack *head;
+	int j;
+	int i;
+	int num;
+	int size;
+	
+	j = -1;
+	i = 0;
+	size = stack_length(*a);
+	head = (*a);
+	while (!is_sorted(a))
+	{
+		while (++j < size)
+		{
+			head = (*a);
+			num = head->number;
+			if ((num >> i && 1) == 1)
+				r(a, "ra");
+			else
+				p(a, p, "pb");
+		}
+		while (stack_length(*b))
+			p(a, b, "pa");
+		i++;
+	}
+	
 }
 
 /*

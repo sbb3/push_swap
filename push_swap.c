@@ -6,19 +6,15 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:00:58 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/17 18:22:46 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/19 10:57:05 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 int	kolo(int c)
 {
-	fprintf(stderr, "i am here\n");
-
 	if (!(c >= '0' && c <= '9'))
 		return (0);
-	fprintf(stderr, "i am here\n");
-
 	return (1);
 }
 int	ft_isdigit(const char **av, int ac)
@@ -62,16 +58,16 @@ int main(int ac, char const *av[])
 	// 	ft_error("Error");
 	ac = ac - 1;
 
-	if (!ft_isdigit(av, ac))
-	{
-		printf("NOT DIGIT\n");
-		exit(1);
-	}
-	else
-	{
-		printf("DIGIT\n");
-		exit(1);
-	}
+	// if (!ft_isdigit(av, ac))
+	// {
+	// 	printf("NOT DIGIT\n");
+	// 	exit(1);
+	// }
+	// else
+	// {
+	// 	printf("DIGIT\n");
+	// 	exit(1);
+	// }
 	arr = stack_indexed(ac, av);
 
 	// ft_error(av, ac);
@@ -89,8 +85,8 @@ int main(int ac, char const *av[])
 
 	if (ac < 6)
 		simple_sort(&a, &b, ac);
-	// else
-	// 	radix_sort(&a, &b);
+	else
+		radix_sort(&a, &b);
 
 	if (is_sorted(a))
 		printf("\nstack is sorted\n");
