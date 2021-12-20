@@ -6,26 +6,11 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:01:06 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/19 18:35:42 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/20 11:03:52 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-
-void	ft_putstr(char *s)
-{
-	while (*s)
-		write(1, s++, 1);
-	write(1, "\n", 1);
-}
-
-void	ft_error(char *s)
-{
-	while (*s)
-		write(1, s++, 1);
-	write(1, "\n", 1);
-	exit(1);
-}
+#include "push_swap.h"
 
 int	stack_size(t_stack *list)
 {
@@ -38,20 +23,6 @@ int	stack_size(t_stack *list)
 		list = list->next;
 	}
 	return (count);
-}
-
-int	is_sorted(t_stack *list)
-{
-	t_stack	*next_node;
-
-	while (list->next != NULL)
-	{
-		next_node = list->next;
-		if (list->number > next_node->number)
-			return (0);
-		list = list->next;
-	}
-	return (1);
 }
 
 t_stack	*delete_top(t_stack *list)
@@ -86,4 +57,10 @@ t_stack	*push_top(t_stack *list, int num)
 		list = new_node;
 	}
 	return (new_node);
+}
+
+void	srr(t_stack **stack)
+{
+	s(stack, "sa");
+	rr(stack, "rra");
 }

@@ -6,11 +6,11 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:00:53 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/19 18:37:23 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/20 10:19:41 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 void	s(t_stack **list, char *s)
 {
@@ -74,10 +74,4 @@ void	rrs(t_stack **stack)
 {
 	rr(stack, "rra");
 	s(stack, "sa");
-}
-
-void	srr(t_stack **stack)
-{
-	s(stack, "sa");
-	rr(stack, "rra");
 }

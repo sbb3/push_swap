@@ -6,7 +6,7 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:00:58 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/19 17:18:42 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/20 11:27:29 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int	main(int ac, char const *av[])
 		simple_sort(&a, &b, ac);
 	else
 		radix_sort(&a, &b);
-	// system("leaks a.out");
+	// system("leaks push_swap");
 	return (0);
 }

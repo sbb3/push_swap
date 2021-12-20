@@ -6,11 +6,11 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 10:31:34 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/19 18:24:07 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/20 10:03:53 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 static int	ft_isspace(char c)
 {
@@ -24,7 +24,7 @@ static int	ft_isspace(char c)
 
 int	ft_atoi(const char *s)
 {
-	unsigned long	num;
+	long			num;
 	size_t			i;
 	int				k;
 	int				sign;
@@ -43,7 +43,7 @@ int	ft_atoi(const char *s)
 		num = (num * 10) + (s[i++] - '0');
 		k = 1;
 	}
-	if (num >= INT_MIN || num >= INT_MAX)
+	if (num > INT_MAX || num < INT_MIN)
 		ft_error("Error");
 	if (k == 0)
 		ft_error("Error");

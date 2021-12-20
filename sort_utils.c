@@ -6,7 +6,7 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 17:32:01 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/19 18:47:25 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/20 10:27:36 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@ int	get_next_min(t_stack **a, int min)
 	int		next_min;
 
 	head = (*a);
-	// 0 3 2 1 4
-	// if min = head->number, point next_min 
-	//to another number, so you get infinite loop
 	if (head->number == min)
 		next_min = head->next->number;
 	else
@@ -121,14 +118,4 @@ void	sort_five_numbers(t_stack **a, t_stack **b)
 		s(b, "sb");
 	while (stack_size(*b))
 		p(a, b, "pa");
-}
-
-void	simple_sort(t_stack **a, t_stack **b, int ac)
-{
-	if (ac <= 3)
-		sort_three_numbers(a);
-	else if (ac <= 4)
-		sort_four_numbers(a, b);
-	else
-		sort_five_numbers(a, b);
 }
