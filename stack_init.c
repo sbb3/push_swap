@@ -6,7 +6,7 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 17:53:45 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/20 11:12:41 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/20 11:53:09 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,6 @@ t_stack	*stack_init(int ac, char const *av[])
 
 	a = NULL;
 	size = ac - 1;
-	arr = (int *) malloc(sizeof(int) * ac);
-	if (!arr)
-		return (0);
 	arr = stack_indexed(ac, av);
 	if (is_duplicated(arr, ac))
 		ft_error("Error");
