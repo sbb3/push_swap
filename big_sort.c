@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   radix_sort.c                                       :+:      :+:    :+:   */
+/*   sort_algo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 10:55:28 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/20 10:25:42 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/21 13:08:54 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	simple_sort(t_stack **a, t_stack **b, int ac)
 
 void	radix_sort(t_stack **a, t_stack **b)
 {
-	t_stack	*head;
 	int		j;
 	int		i;
 	int		num;
@@ -32,14 +31,12 @@ void	radix_sort(t_stack **a, t_stack **b)
 
 	i = 0;
 	size = stack_size(*a);
-	head = (*a);
 	while (!is_sorted(*a))
 	{
 		j = -1;
 		while (++j < size)
 		{
-			head = (*a);
-			num = head->number;
+			num = (*a)->number;
 			if ((num >> i & 1) == 1)
 				r(a, "ra");
 			else

@@ -6,7 +6,7 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:01:06 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/20 11:03:52 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/21 13:08:08 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ t_stack	*push_top(t_stack *list, int num)
 	t_stack	*new_node;
 
 	new_node = (t_stack *) malloc(sizeof(t_stack));
+	if (!new_node)
+		return (0);
 	if (list == NULL)
 	{
 		new_node->number = num;
