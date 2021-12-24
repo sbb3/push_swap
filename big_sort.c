@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_algo.c                                        :+:      :+:    :+:   */
+/*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 10:55:28 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/21 13:08:54 by adouib           ###   ########.fr       */
+/*   Updated: 2021/12/24 17:54:38 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,21 @@ void	simple_sort(t_stack **a, t_stack **b, int ac)
 
 void	radix_sort(t_stack **a, t_stack **b)
 {
-	int		j;
-	int		i;
-	int		num;
-	int		size;
+	int	j;
+	int	i;
+	int	k;
+	int	num;
+	int	size1;
+	int	size2;
+	k = 1;
 
 	i = 0;
-	size = stack_size(*a);
+	size1 = stack_size(*a);
+	size2 = stack_size(*b);
 	while (!is_sorted(*a))
 	{
 		j = -1;
-		while (++j < size)
+		while (++j < size1)
 		{
 			num = (*a)->number;
 			if ((num >> i & 1) == 1)
@@ -42,8 +46,60 @@ void	radix_sort(t_stack **a, t_stack **b)
 			else
 				p(a, b, "pb");
 		}
+		j = -1;
+		while (++j < size2)
+		{
+			num = (*b)->number;
+			if ((num >> k & 1) == 1)
+				p(a, b, "pa");
+			else
+				r(a, "rb");
+			k++;
+		}
 		while (stack_size(*b))
 			p(a, b, "pa");
 		i++;
 	}
 }
+	
+/*
+
+1  01
+2  10
+3  11
+4 100
+6 110
+0  00
+
+a 1 2 3 4 6 0
+
+b 
+
+*/
+
+
+// void	radix_sort(t_stack **a, t_stack **b)
+// {
+// 	int	j;
+// 	int	i;
+// 	int	num;
+// 	int	size;
+
+// 	i = 0;
+// 	size = stack_size(*a);
+// 	while (!is_sorted(*a))
+// 	{
+// 		j = -1;
+// 		while (++j < size)
+// 		{
+// 			num = (*a)->number;
+// 			if ((num >> i & 1) == 1)
+// 				r(a, "ra");
+// 			else
+// 				p(a, b, "pb");
+// 		}
+// 		while (stack_size(*b))
+// 			p(a, b, "pa");
+// 		i++;
+// 	}
+// }
