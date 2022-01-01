@@ -22,45 +22,33 @@ void	simple_sort(t_stack **a, t_stack **b, int ac)
 		sort_five_numbers(a, b);
 }
 
+
 void	radix_sort(t_stack **a, t_stack **b)
 {
-	int	j;
 	int	i;
-	int	k;
 	int	num;
-	int	size1;
-	int	size2;
-	k = 1;
+	int	size;
 
 	i = 0;
-	size1 = stack_size(*a);
-	size2 = stack_size(*b);
 	while (!is_sorted(*a))
 	{
-		j = -1;
-		while (++j < size1)
+		size = stack_size(*a);
+		while (size--)
 		{
 			num = (*a)->number;
 			if ((num >> i & 1) == 1)
 				r(a, "ra");
 			else
 				p(a, b, "pb");
-		}
-		j = -1;
-		while (++j < size2)
-		{
-			num = (*b)->number;
-			if ((num >> k & 1) == 1)
-				p(a, b, "pa");
-			else
-				r(a, "rb");
-			k++;
+			if (is_sorted(*a))
+				break ;
 		}
 		while (stack_size(*b))
 			p(a, b, "pa");
 		i++;
 	}
 }
+
 	
 /*
 
