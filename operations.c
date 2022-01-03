@@ -6,7 +6,7 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:00:53 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/20 10:19:41 by adouib           ###   ########.fr       */
+/*   Updated: 2022/01/03 21:04:59 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void	s(t_stack **list, char *s)
 	if (stack_size(*list) == 2)
 		(*list)->next = NULL;
 	else
-	{
 		(*list)->next = next_node->next;
-	}
 	next_node->next = (*list);
 	(*list) = next_node;
 	ft_putstr(s);

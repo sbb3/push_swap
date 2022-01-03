@@ -6,7 +6,7 @@
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:01:10 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/20 10:11:57 by adouib           ###   ########.fr       */
+/*   Updated: 2022/01/03 21:22:31 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ int		ft_atoi(const char *s);
 void	ft_error(char *s);
 int		is_duplicated(int arr[], int ac);
 void	ft_sort(int arr[], int n);
-int		*ft_intdup_sorted(int *arr, int len);
 int		*stack_indexed(int ac, char const *av[]);
+int		*arr_sorting(int *arr, int len);
+int		*arr_indexing(int *arr, int *arr_dup_sorted, int ac);
 
 // linked list functions
 int		stack_size(t_stack *list);
