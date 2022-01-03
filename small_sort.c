@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_utils.c                                       :+:      :+:    :+:   */
+/*   small_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouib <adouib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 17:32:01 by adouib            #+#    #+#             */
-/*   Updated: 2021/12/20 12:34:52 by adouib           ###   ########.fr       */
+/*   Updated: 2022/01/03 16:56:24 by adouib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,13 @@ void	sort_five_numbers(t_stack **a, t_stack **b)
 		else
 			r(a, "ra");
 	}
-	if (is_sorted(*b))
+	if (is_sorted(*b) && stack_size(*b) > 1)
 		s(b, "sb");
+	if ((*b)->number > (*a)->number)
+    {
+        p(a, b, "pa");
+        s(a, "sa");
+    }
 	while (stack_size(*b))
 		p(a, b, "pa");
 }
