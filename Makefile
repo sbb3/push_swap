@@ -6,7 +6,7 @@
 #    By: adouib <adouib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/12 15:01:13 by adouib            #+#    #+#              #
-#    Updated: 2022/01/03 20:59:24 by adouib           ###   ########.fr        #
+#    Updated: 2022/01/03 21:25:28 by adouib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,5 +38,3 @@ fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
-
-.PHONY: all clean fclean re
